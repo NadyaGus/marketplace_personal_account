@@ -1,0 +1,48 @@
+{
+  "name": "marketplace_personal_account",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "author": "Nadya Gusakova <nadyagus95@mail.ru>",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "server": "vite server",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint --fix --color ./src",
+    "typecheck": "tsc",
+    "preview": "vite preview",
+    "deploy": "npm run build && npx gh-pages -d dist -e main"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/react-router-dom": "^5.3.3",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "eslint-plugin-perfectionist": "^2.11.0",
+    "eslint-plugin-react": "^7.35.2",
+    "eslint-plugin-react-compiler": "^0.0.0-experimental-8d8bd53-20240905",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "gh-pages": "^6.1.1",
+    "globals": "^15.9.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.0.1",
+    "vite": "^5.4.1"
+  }
+}
