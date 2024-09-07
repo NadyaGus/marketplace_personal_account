@@ -8,23 +8,23 @@ import { OrdersListPage } from '@/pages/ordersPage';
 import { Layout } from '../layout';
 
 export const APP_ROUTES = {
-  advertisement: '/advertisements/:id',
-  allAdvertisements: '/advertisements',
-  orders: '/orders',
-  root: '/',
+  advertisement: { label: 'Страница объявления', link: '/advertisements/:id' },
+  allAdvertisements: { label: 'Объявления', link: '/advertisements' },
+  orders: { label: 'Заказы', link: '/orders' },
+  root: { label: 'Главная', link: '/' },
 };
 
 export const routes = [
   {
     children: [
       { element: <AdvertisementsListPage />, index: true },
-      { element: <AdvertisementsListPage />, path: APP_ROUTES.allAdvertisements },
-      { element: <AdvertisementPage />, path: APP_ROUTES.advertisement },
-      { element: <OrdersListPage />, path: APP_ROUTES.orders },
+      { element: <AdvertisementsListPage />, path: APP_ROUTES.allAdvertisements.link },
+      { element: <AdvertisementPage />, path: APP_ROUTES.advertisement.link },
+      { element: <OrdersListPage />, path: APP_ROUTES.orders.link },
     ],
     element: <Layout />,
     errorElement: <ErrorPage />,
-    path: APP_ROUTES.root,
+    path: APP_ROUTES.root.link,
   },
 ];
 
