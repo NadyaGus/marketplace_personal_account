@@ -17,6 +17,11 @@
     "deploy": "npm run build && npx gh-pages -d dist -e main"
   },
   "dependencies": {
+    "@mantine/core": "^7.12.2",
+    "@mantine/form": "^7.12.2",
+    "@mantine/hooks": "^7.12.2",
+    "@mantine/modals": "^7.12.2",
+    "@mantine/notifications": "^7.12.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^4.0.13",
@@ -41,6 +46,9 @@
     "eslint-plugin-react-refresh": "^0.4.9",
     "gh-pages": "^6.1.1",
     "globals": "^15.9.0",
+    "postcss": "^8.4.45",
+    "postcss-preset-mantine": "^1.17.0",
+    "postcss-simple-vars": "^7.0.1",
     "prettier": "^3.3.3",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
