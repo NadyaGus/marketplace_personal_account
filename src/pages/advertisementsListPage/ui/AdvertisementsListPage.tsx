@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate, useSearchParams } from 'react-router-dom';
 
 import { Button, Container, Modal, TextInput, Textarea, Title } from '@mantine/core';
 import { Form, useForm } from '@mantine/form';
@@ -19,6 +19,9 @@ import classes from './advertisementsListPage.module.css';
 export const AdvertisementsListPage = (): ReactNode => {
   const pageLoaderData = useLoaderData() as AdvertisementPageResponse;
 
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+
   const [opened, { close, open }] = useDisclosure(false);
 
   const form = useForm({
@@ -37,6 +40,9 @@ export const AdvertisementsListPage = (): ReactNode => {
 
   const handleSubmit = async (advertisement: Partial<Advertisement>): Promise<void> => {
     await createAdvertisement(advertisement);
+    form.reset();
+    close();
+    navigate(`/advertisements?${searchParams.get('page') ? `page=${searchParams.get('page')}` : '1'}`);
   };
 
   return (

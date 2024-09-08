@@ -8,13 +8,12 @@ interface PaginationProps {
 }
 
 export const PaginationWidget = (props: PaginationProps): ReactNode => {
-  const searchParams = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const navigate = useNavigate();
   const handlePaginationChange = (page: number): void => {
-    const targetSearchParams = new URLSearchParams(location.search);
-    targetSearchParams.set('page', page.toString());
-    navigate(`?${targetSearchParams.toString()}`);
+    searchParams.set('page', page.toString());
+    navigate(`?${searchParams.toString()}`);
   };
 
   return (
@@ -22,7 +21,7 @@ export const PaginationWidget = (props: PaginationProps): ReactNode => {
       mt="sm"
       onChange={handlePaginationChange}
       total={props.pages}
-      value={searchParams[0].get('page') ? Number(searchParams[0].get('page')) : 1}
+      value={searchParams.get('page') ? Number(searchParams.get('page')) : 1}
     />
   );
 };
