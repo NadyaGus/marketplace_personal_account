@@ -53,7 +53,7 @@ export const AdvertisementsListPage = (): ReactNode => {
           <Select
             allowDeselect={false}
             data={['10', '20', '30']}
-            defaultValue="10"
+            defaultValue={itemsPerPage ? itemsPerPage.value : (searchParams.get('limit') ?? '10')}
             label="Объявлений на странице"
             onChange={(_value, option) => handlePerPageSelectChange(option)}
             value={itemsPerPage ? itemsPerPage.value : (searchParams.get('limit') ?? '10')}
@@ -65,7 +65,7 @@ export const AdvertisementsListPage = (): ReactNode => {
         ))}
       </Container>
 
-      <PaginationWidget pages={Math.ceil(+pageLoaderData.total / 10)} />
+      <PaginationWidget pages={Math.ceil(+pageLoaderData.total / (Number(searchParams.get('limit')) ?? 10))} />
 
       <CreateAdvertisementModal close={close} opened={opened} />
     </>
