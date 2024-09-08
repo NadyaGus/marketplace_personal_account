@@ -65,7 +65,7 @@ export const AdvertisementsListPage = (): ReactNode => {
           form.reset();
         }}
         opened={opened}
-        title="Новое объявлениe"
+        title="Новое объявление"
         withCloseButton={true}
       >
         <Form

@@ -1,4 +1,4 @@
-import { getAdvertisementsList } from './getAdvertisemenstList';
+import { getAdvertisementsList } from './getAdvertisementsList';
 
 export const loaderAdvertisementsList = async ({ request }: { request: Request }): Promise<Response> => {
   const url = new URL(request.url);
