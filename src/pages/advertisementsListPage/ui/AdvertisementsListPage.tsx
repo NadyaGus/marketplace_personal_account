@@ -1,4 +1,4 @@
-import { type ReactNode, useState } from 'react';
+import { type ReactNode } from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 import { Button, Container, Modal, TextInput, Textarea, Title } from '@mantine/core';
@@ -7,9 +7,10 @@ import { useDisclosure } from '@mantine/hooks';
 
 import type { Advertisement } from '@/entities/advertisement';
 
-import { AdvertisementItem } from '@/entities/advertisement/ui/AdvertisementItem';
+import { AdvertisementItem } from '@/entities/advertisement';
+import { PaginationWidget } from '@/widgets/pagination';
 
-import type { AdvertisementPageResponse } from '../model/types';
+import type { AdvertisementPageResponse } from '../types';
 
 import { createAdvertisement } from '../model/createAdvertisement';
 
@@ -17,7 +18,7 @@ import classes from './advertisementsListPage.module.css';
 
 export const AdvertisementsListPage = (): ReactNode => {
   const pageLoaderData = useLoaderData() as AdvertisementPageResponse;
-  const [advertisements] = useState(pageLoaderData.data);
+
   const [opened, { close, open }] = useDisclosure(false);
 
   const form = useForm({
@@ -35,21 +36,21 @@ export const AdvertisementsListPage = (): ReactNode => {
   });
 
   const handleSubmit = async (advertisement: Partial<Advertisement>): Promise<void> => {
-    console.log(advertisement);
-    const newAdvertisement = await createAdvertisement(advertisement);
-    console.log(newAdvertisement?.json());
+    await createAdvertisement(advertisement);
   };
 
   return (
     <>
       <Container maw={1280} px={'lg'}>
         <Title order={2}>Ваши объявления</Title>
-        {advertisements.map((item) => (
+        {pageLoaderData.data.map((item) => (
           <AdvertisementItem key={item.id} {...item} />
         ))}
 
         <Button onClick={open}>Создать новое объявление</Button>
       </Container>
+
+      <PaginationWidget pages={pageLoaderData.pages} />
 
       <Modal
         className={classes.modal}

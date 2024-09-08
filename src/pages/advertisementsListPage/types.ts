@@ -5,7 +5,7 @@ export interface AdvertisementPageResponse {
   first: number;
   items: number;
   last: number;
-  next: null | number; // TODO: fix
+  next: number;
   pages: number;
-  prev: null | number; // TODO: fix
+  prev: number;
 }

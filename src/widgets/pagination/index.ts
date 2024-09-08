@@ -1,0 +1,1 @@
+export { PaginationWidget } from './Pagination';
