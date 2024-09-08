@@ -16,7 +16,7 @@ export const Layout = (): ReactNode => {
         <Outlet />
       </main>
 
-      <footer>Footer</footer>
+      <footer className={classes.footer}>Footer</footer>
     </>
   );
 };
