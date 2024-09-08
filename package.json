@@ -22,7 +22,7 @@
     "@mantine/hooks": "^7.12.2",
     "@mantine/modals": "^7.12.2",
     "@mantine/notifications": "^7.12.2",
-    "json-server": "^1.0.0-beta.2",
+    "json-server": "0.17.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^4.0.13",
