@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import { AdvertisementPage } from '@/pages/advertisementPage';
 import { AdvertisementsListPage } from '@/pages/advertisementsListPage';
-import { loaderAdvertisementList } from '@/pages/advertisementsListPage/model/loaderAdvertisementList';
+import { loaderAdvertisementsList } from '@/pages/advertisementsListPage/model/loaderAdvertisementsList';
 import { ErrorPage } from '@/pages/errorPage/ui/ErrorPage';
 import { OrdersListPage } from '@/pages/ordersPage';
 
@@ -18,8 +18,12 @@ export const APP_ROUTES = {
 export const routes = [
   {
     children: [
-      { element: <AdvertisementsListPage />, index: true, loader: loaderAdvertisementList },
-      { element: <AdvertisementsListPage />, loader: loaderAdvertisementList, path: APP_ROUTES.allAdvertisements.link },
+      { element: <AdvertisementsListPage />, index: true, loader: loaderAdvertisementsList },
+      {
+        element: <AdvertisementsListPage />,
+        loader: loaderAdvertisementsList,
+        path: APP_ROUTES.allAdvertisements.link,
+      },
       { element: <AdvertisementPage />, path: APP_ROUTES.advertisement.link },
       { element: <OrdersListPage />, path: APP_ROUTES.orders.link },
     ],
