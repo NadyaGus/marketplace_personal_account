@@ -60,9 +60,11 @@ export const AdvertisementsListPage = (): ReactNode => {
           />
           <Button onClick={open}>Создать новое объявление</Button>
         </Flex>
-        {pageLoaderData.data.map((item) => (
-          <AdvertisementItem key={item.id} {...item} />
-        ))}
+        <Flex direction={'column'} gap={'lg'}>
+          {pageLoaderData.data.map((item) => (
+            <AdvertisementItem item={item} key={item.id} />
+          ))}
+        </Flex>
       </Container>
 
       <PaginationWidget pages={Math.ceil(+pageLoaderData.total / (Number(searchParams.get('limit')) ?? 10))} />

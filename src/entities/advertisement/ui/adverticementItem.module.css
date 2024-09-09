@@ -1,0 +1,9 @@
+.link {
+  text-decoration: none;
+}
+
+.card {
+  padding: 2rem;
+  outline: 1px solid var(--mantine-color-blue-3);
+  border-radius: var(--mantine-radius-md);
+}
