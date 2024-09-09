@@ -4,7 +4,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button, Modal, TextInput, Textarea } from '@mantine/core';
 import { Form, useForm } from '@mantine/form';
 
-import type { Advertisement } from '@/entities/advertisement';
+import type { Advertisment } from '@/types';
 
 import { createAdvertisement } from '../../model/createAdvertisement';
 
@@ -28,7 +28,7 @@ export const CreateAdvertisementModal = ({ close, opened }: { close: () => void;
     },
   });
 
-  const handleSubmit = async (advertisement: Partial<Advertisement>): Promise<void> => {
+  const handleSubmit = async (advertisement: Partial<Advertisment>): Promise<void> => {
     await createAdvertisement(advertisement);
     form.reset();
     close();

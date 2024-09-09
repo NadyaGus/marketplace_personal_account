@@ -1,6 +1,6 @@
-import type { Advertisement } from '@/entities/advertisement';
+import type { Advertisment } from '@/types';
 
 export interface AdvertisementPageResponse {
-  data: Advertisement[];
+  data: Advertisment[];
   total: string;
 }

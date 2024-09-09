@@ -1,6 +1,6 @@
-import type { Advertisement } from '@/entities/advertisement';
+import type { Advertisment } from '@/types';
 
-export const createAdvertisement = async (data: Partial<Advertisement>): Promise<Response | void> => {
+export const createAdvertisement = async (data: Partial<Advertisment>): Promise<Response | void> => {
   const response = await fetch('http://localhost:3000/advertisements', {
     body: JSON.stringify({
       createdAt: data.createdAt,
