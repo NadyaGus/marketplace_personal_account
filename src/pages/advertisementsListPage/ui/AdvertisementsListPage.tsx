@@ -67,7 +67,7 @@ export const AdvertisementsListPage = (): ReactNode => {
         </Flex>
       </Container>
 
-      <PaginationWidget pages={Math.ceil(+pageLoaderData.total / (Number(searchParams.get('limit')) ?? 10))} />
+      <PaginationWidget pages={Math.ceil(+pageLoaderData.total / (Number(searchParams.get('limit')) || 10))} />
 
       <CreateAdvertisementModal close={close} opened={opened} />
     </>

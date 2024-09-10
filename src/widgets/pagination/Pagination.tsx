@@ -12,6 +12,7 @@ export const PaginationWidget = (props: PaginationProps): ReactNode => {
 
   const navigate = useNavigate();
   const handlePaginationChange = (page: number): void => {
+    window.scrollTo(0, 0);
     searchParams.set('page', page.toString());
     navigate(`?${searchParams.toString()}`);
   };
