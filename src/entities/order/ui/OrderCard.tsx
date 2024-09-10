@@ -41,7 +41,7 @@ export const OrderCard = ({ order }: { order: Order }): ReactNode => {
           </Button>
         </Flex>
 
-        <Text>Стоимость: {order.total} ₽</Text>
+        <Text>Сумма заказа: {order.total} ₽</Text>
         <Text>Дата создания: {order.createdAt}</Text>
 
         <Text>Количество товаров: {order.items.length}</Text>

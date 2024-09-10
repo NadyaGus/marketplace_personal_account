@@ -1,14 +1,22 @@
-import type { Order } from '@/types';
+import { sortOrderValues } from '../types';
 
-export const getOrders = async (): Promise<Order[]> => {
-  const response = await fetch('http://localhost:3000/orders', {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    method: 'GET',
-  });
+export const getOrders = async ({ request }: { request: Request }): Promise<Response> => {
+  const url = new URL(request.url);
+  const sort = url.searchParams.get('sort') ?? sortOrderValues.asc;
 
-  const data = (await response.json()) as Order[];
-
-  return data;
+  if (sort === sortOrderValues.desc) {
+    return await fetch(`http://localhost:3000/orders?_sort=total`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'GET',
+    });
+  } else {
+    return await fetch(`http://localhost:3000/orders?_sort=-total`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'GET',
+    });
+  }
 };
