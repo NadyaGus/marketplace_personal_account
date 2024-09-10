@@ -6,6 +6,7 @@ import { AdvertisementsListPage } from '@/pages/advertisementsListPage';
 import { loaderAdvertisementsList } from '@/pages/advertisementsListPage/model/loaderAdvertisementsList';
 import { ErrorPage } from '@/pages/errorPage/ui/ErrorPage';
 import { OrdersListPage } from '@/pages/ordersPage';
+import { loaderOrdersList } from '@/pages/ordersPage/model/loaderOrdersList';
 
 import { Layout } from '../layout';
 
@@ -26,7 +27,7 @@ export const routes = [
         path: APP_ROUTES.allAdvertisements.link,
       },
       { element: <AdvertisementPage />, loader: loaderAdvertisementPage, path: APP_ROUTES.advertisement.link },
-      { element: <OrdersListPage />, path: APP_ROUTES.orders.link },
+      { element: <OrdersListPage />, loader: loaderOrdersList, path: APP_ROUTES.orders.link },
     ],
     element: <Layout />,
     errorElement: <ErrorPage />,
