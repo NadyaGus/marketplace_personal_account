@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { AdvertisementPage } from '@/pages/advertisementPage';
+import { loaderAdvertisementPage } from '@/pages/advertisementPage/model/loaderAdvertisementPage';
 import { AdvertisementsListPage } from '@/pages/advertisementsListPage';
 import { loaderAdvertisementsList } from '@/pages/advertisementsListPage/model/loaderAdvertisementsList';
 import { ErrorPage } from '@/pages/errorPage/ui/ErrorPage';
@@ -24,7 +25,7 @@ export const routes = [
         loader: loaderAdvertisementsList,
         path: APP_ROUTES.allAdvertisements.link,
       },
-      { element: <AdvertisementPage />, path: APP_ROUTES.advertisement.link },
+      { element: <AdvertisementPage />, loader: loaderAdvertisementPage, path: APP_ROUTES.advertisement.link },
       { element: <OrdersListPage />, path: APP_ROUTES.orders.link },
     ],
     element: <Layout />,
