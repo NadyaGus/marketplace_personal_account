@@ -5,9 +5,9 @@ import { Badge, Flex, Image, Skeleton, Text, Title } from '@mantine/core';
 
 import type { Advertisment } from '@/types';
 
-import classes from './adverticementItem.module.css';
+import classes from './advertisementCard.module.css';
 
-export const AdvertisementItem = ({ item }: { item: Advertisment }): ReactNode => {
+export const AdvertisementCard = ({ item }: { item: Advertisment }): ReactNode => {
   return (
     <Link className={classes.link} to={`/advertisements/${item.id}`}>
       <Flex className={classes.card}>

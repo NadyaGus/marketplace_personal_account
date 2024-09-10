@@ -6,7 +6,7 @@ import { useLoaderData, useNavigate, useSearchParams } from 'react-router-dom';
 import { Button, Container, Flex, Select, TextInput, Title } from '@mantine/core';
 import { useDebouncedCallback, useDisclosure } from '@mantine/hooks';
 
-import { AdvertisementItem } from '@/entities/advertisement';
+import { AdvertisementCard } from '@/entities/advertisement';
 import { PaginationWidget } from '@/widgets/pagination';
 
 import type { AdvertisementPageResponse } from '../types';
@@ -62,7 +62,7 @@ export const AdvertisementsListPage = (): ReactNode => {
         </Flex>
         <Flex direction={'column'} gap={'lg'}>
           {pageLoaderData.data.map((item) => (
-            <AdvertisementItem item={item} key={item.id} />
+            <AdvertisementCard item={item} key={item.id} />
           ))}
         </Flex>
       </Container>

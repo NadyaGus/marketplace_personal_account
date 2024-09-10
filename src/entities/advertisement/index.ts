@@ -1,1 +1,1 @@
-export { AdvertisementItem } from './ui/AdvertisementItem';
+export { AdvertisementCard } from './ui/AdvertisementCard';
