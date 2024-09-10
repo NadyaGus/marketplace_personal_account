@@ -1,14 +1,13 @@
 import type { ReactNode } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import { Button, Modal, TextInput, Textarea } from '@mantine/core';
-import { Form, useForm } from '@mantine/form';
+import { useForm } from '@mantine/form';
 
 import type { Advertisment } from '@/types';
 
-import { createAdvertisement } from '../../model/createAdvertisement';
+import { AdvertisementModal } from '@/shared/advertisementModal/AdvertisementModal';
 
-import classes from './createAdvertisementModal.module.css';
+import { createAdvertisement } from '../../model/createAdvertisement';
 
 export const CreateAdvertisementModal = ({ close, opened }: { close: () => void; opened: boolean }): ReactNode => {
   const navigate = useNavigate();
@@ -36,47 +35,13 @@ export const CreateAdvertisementModal = ({ close, opened }: { close: () => void;
   };
 
   return (
-    <Modal
-      className={classes.modal}
-      onClose={() => {
-        close();
-        form.reset();
-      }}
+    <AdvertisementModal
+      buttonTitle={'Создать объявление'}
+      close={close}
+      form={form}
+      handleSubmit={handleSubmit}
+      modalTitle={'Создание объявления'}
       opened={opened}
-      title="Новое объявление"
-      withCloseButton={true}
-    >
-      <Form
-        form={form}
-        onSubmit={(advertisement) => {
-          handleSubmit(advertisement).catch((error) => console.error(error));
-        }}
-      >
-        <TextInput
-          label="Название объявления"
-          mih={88}
-          placeholder="Введите название объявления"
-          {...form.getInputProps('name')}
-        />
-
-        <TextInput
-          label="Ссылка на изображение"
-          mih={88}
-          placeholder="Введите ссылку на изображение"
-          {...form.getInputProps('imageUrl')}
-        />
-
-        <TextInput label="Цена в рублях" mih={88} placeholder="Введите цену" {...form.getInputProps('price')} />
-
-        <Textarea
-          label="Описание"
-          maxLength={200}
-          mb={32}
-          placeholder="Введите описание"
-          {...form.getInputProps('description')}
-        />
-        <Button type="submit">Создать</Button>
-      </Form>
-    </Modal>
+    />
   );
 };

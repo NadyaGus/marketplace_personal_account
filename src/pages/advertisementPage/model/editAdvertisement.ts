@@ -1,15 +1,19 @@
 import type { Advertisment } from '@/types';
 
-export const editAdvertisement = async (
-  data: Omit<Advertisment, 'createdAt' | 'likes' | 'views'>,
-): Promise<Response | void> => {
-  return await fetch(`http://localhost:3000/advertisements/${data.id}`, {
+export const editAdvertisement = async ({
+  advertisement,
+  id,
+}: {
+  advertisement: Partial<Advertisment>;
+  id: string;
+}): Promise<Response | void> => {
+  return await fetch(`http://localhost:3000/advertisements/${id}`, {
     body: JSON.stringify({
-      description: data.description,
-      id: data.id,
-      imageUrl: data.imageUrl,
-      name: data.name,
-      price: data.price,
+      description: advertisement.description,
+      id,
+      imageUrl: advertisement.imageUrl,
+      name: advertisement.name,
+      price: advertisement.price,
     }),
     headers: {
       'Content-Type': 'application/json',
