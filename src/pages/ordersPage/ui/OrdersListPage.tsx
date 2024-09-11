@@ -3,7 +3,7 @@ import type { ComboboxItem } from '@mantine/core';
 import { type ReactNode, useState } from 'react';
 import { useLoaderData, useNavigate, useSearchParams } from 'react-router-dom';
 
-import { Container, Flex, Select, Title } from '@mantine/core';
+import { Container, Grid, Select, Title } from '@mantine/core';
 
 import type { Order } from '@/types';
 
@@ -27,23 +27,25 @@ export const OrdersListPage = (): ReactNode => {
 
   return (
     <>
-      <Container>
-        <Title order={2}>Заказы</Title>
+      <Container maw={1280} p={'lg'}>
+        <Title order={1}>Заказы</Title>
 
         <Select
           allowDeselect={false}
           data={[sortOrderValues.asc, sortOrderValues.desc]}
-          defaultValue={sortOrder ? sortOrder.value : (searchParams.get('sort') ?? sortOrderValues.asc)}
+          defaultValue={searchParams.get('sort') ?? sortOrder?.value}
           label="Сумма заказа"
           onChange={(_value, option) => handleSort(option)}
-          value={sortOrder ? sortOrder.value : (searchParams.get('sort') ?? sortOrderValues.asc)}
+          pb={'2rem'}
+          pt={'1rem'}
+          value={searchParams.get('sort')}
         />
 
-        <Flex direction={'column'}>
+        <Grid gutter={'lg'}>
           {data.map((item) => (
             <OrderCard key={item.id} order={item} />
           ))}
-        </Flex>
+        </Grid>
       </Container>
     </>
   );

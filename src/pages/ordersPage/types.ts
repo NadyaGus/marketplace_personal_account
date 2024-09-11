@@ -1,4 +1,4 @@
 export const sortOrderValues = {
-  asc: 'Сначала больше',
-  desc: 'Сначала меньше',
+  asc: 'Сначала меньше',
+  desc: 'Сначала больше',
 } as const;
