@@ -10,6 +10,7 @@ import type { Order } from '@/types';
 import { OrderCard } from '@/entities/order';
 
 import { sortOrderValues } from '../types';
+import { Filters } from './filters/Filters';
 
 export const OrdersListPage = (): ReactNode => {
   const data = useLoaderData() as Order[];
@@ -30,6 +31,11 @@ export const OrdersListPage = (): ReactNode => {
       <Container maw={1280} p={'lg'}>
         <Title order={1}>Заказы</Title>
 
+        <Title order={4} pb={'lg'} pt={'lg'}>
+          Статус:
+        </Title>
+        <Filters />
+
         <Select
           allowDeselect={false}
           data={[sortOrderValues.asc, sortOrderValues.desc]}
@@ -37,8 +43,9 @@ export const OrdersListPage = (): ReactNode => {
           label="Сумма заказа"
           onChange={(_value, option) => handleSort(option)}
           pb={'2rem'}
-          pt={'1rem'}
+          pt={'2rem'}
           value={searchParams.get('sort')}
+          w={200}
         />
 
         <Grid gutter={'lg'}>

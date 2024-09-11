@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect } from 'react';
+import { type ReactNode } from 'react';
 import { Outlet, useNavigation } from 'react-router-dom';
 
 import { Loader, LoadingOverlay } from '@mantine/core';
@@ -12,19 +12,18 @@ import classes from './layout.module.css';
 export const Layout = (): ReactNode => {
   const navigation = useNavigation();
 
-  useEffect(() => {
-    console.log(navigation.state);
-  }, [navigation.state]);
-
   return (
     <>
       <Header links={[APP_ROUTES.allAdvertisements, APP_ROUTES.orders]} />
-
-      <LoadingOverlay loaderProps={{ children: <Loader /> }} pos={'fixed'} visible={navigation.state === 'loading'} />
       <main className={classes.main}>
         <Outlet />
       </main>
-
+      <LoadingOverlay
+        className={classes.loader}
+        loaderProps={{ children: <Loader /> }}
+        pos={'fixed'}
+        visible={navigation.state === 'loading'}
+      />
       <footer className={classes.footer}>Footer</footer>
     </>
   );
