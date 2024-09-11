@@ -1,11 +1,10 @@
 import { type ReactNode, useState } from 'react';
 import { Link, useNavigation } from 'react-router-dom';
 
+import placeholderImage from '@/../public/placeholder.png';
 import { Badge, Button, Collapse, Flex, Image, Skeleton, Text, Title } from '@mantine/core';
 
 import type { Advertisment } from '@/types';
-
-import placeholderImage from './assets/placeholder.png';
 
 import classes from './advertisementCard.module.css';
 
