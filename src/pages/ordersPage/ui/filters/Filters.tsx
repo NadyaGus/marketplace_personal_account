@@ -1,4 +1,5 @@
 import { type ReactNode, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { Checkbox, Flex } from '@mantine/core';
 
@@ -8,13 +9,18 @@ import { OrderStatus } from '@/types';
 import { useFilters } from '../../model/useFilters';
 
 export const Filters = (): ReactNode => {
-  const [checkArchived, setCheckedArchived] = useState(true);
-  const [checkCreated, setCheckedCreated] = useState(true);
-  const [checkDeliveredToThePoint, setCheckedDeliveredToThePoint] = useState(true);
-  const [checkPaid, setCheckedPaid] = useState(true);
-  const [checkReceived, setCheckedReceived] = useState(true);
-  const [checkRefund, setCheckedRefund] = useState(true);
-  const [checkTransport, setCheckedTransport] = useState(true);
+  const searchParams = useSearchParams()[0];
+  const filtersValue = searchParams.get('status_ne')?.split(',');
+
+  const [checkArchived, setCheckedArchived] = useState(!filtersValue?.includes(`${OrderStatus.Archived}`));
+  const [checkCreated, setCheckedCreated] = useState(!filtersValue?.includes(`${OrderStatus.Created}`));
+  const [checkDeliveredToThePoint, setCheckedDeliveredToThePoint] = useState(
+    !filtersValue?.includes(`${OrderStatus.DeliveredToThePoint}`),
+  );
+  const [checkPaid, setCheckedPaid] = useState(!filtersValue?.includes(`${OrderStatus.Paid}`));
+  const [checkReceived, setCheckedReceived] = useState(!filtersValue?.includes(`${OrderStatus.Received}`));
+  const [checkRefund, setCheckedRefund] = useState(!filtersValue?.includes(`${OrderStatus.Refund}`));
+  const [checkTransport, setCheckedTransport] = useState(!filtersValue?.includes(`${OrderStatus.Transport}`));
 
   const { handleFilter } = useFilters();
 
