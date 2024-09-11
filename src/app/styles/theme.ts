@@ -4,7 +4,7 @@ const themeMantine = createTheme({
   breakpoints: {
     lg: '74em',
     md: '64em',
-    sm: '40em',
+    sm: '44em',
     xl: '90em',
     xs: '30em',
   },

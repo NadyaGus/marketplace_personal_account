@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Burger, Container, Drawer, Flex, Group, Image, Title } from '@mantine/core';
+import { Burger, Container, Drawer, Flex, Group, Image } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
 import type { HeaderLink } from '../types';
@@ -44,10 +44,6 @@ export const Header = ({ links }: { links: HeaderLink[] }): ReactNode => {
         <Link to="/">
           <Image alt="logo" src={logo} w={100} />
         </Link>
-
-        <Title display={{ base: 'none', sm: 'block' }} order={1} size={'1.5rem'}>
-          Личный кабинет
-        </Title>
 
         <Group gap={5} visibleFrom="xs">
           {items}

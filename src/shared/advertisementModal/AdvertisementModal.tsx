@@ -43,6 +43,7 @@ export const AdvertisementModal = ({
       withCloseButton={true}
     >
       <Form
+        className={classes.form}
         form={form}
         onSubmit={(advertisement) => {
           handleSubmit(advertisement).catch((error) => console.error(error));
@@ -71,7 +72,9 @@ export const AdvertisementModal = ({
           placeholder="Введите описание"
           {...form.getInputProps('description')}
         />
-        <Button type="submit">{buttonTitle}</Button>
+        <Button className={classes.button} type="submit">
+          {buttonTitle}
+        </Button>
       </Form>
     </Modal>
   );

@@ -1,5 +1,6 @@
 .main {
-  margin-top: 5rem;
+  max-width: 1280px;
+  margin: 5rem auto;
   min-height: calc(100vh - 5rem - 4rem);
   /* 5rem - header height, 4rem - footer height */
   padding-bottom: 4rem;

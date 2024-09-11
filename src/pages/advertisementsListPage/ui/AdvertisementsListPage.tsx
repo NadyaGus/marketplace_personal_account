@@ -40,30 +40,41 @@ export const AdvertisementsListPage = (): ReactNode => {
   return (
     <>
       <Container maw={1280} px={'lg'}>
-        <Title order={2}>Ваши объявления</Title>
-        <Flex>
-          <TextInput
-            onChange={(event) => {
-              setSearchValue(event.currentTarget.value);
-              debouncedSearch(event.currentTarget.value);
-            }}
-            placeholder="Поиск по названию"
-            value={searchValue}
-          />
-          <Select
-            allowDeselect={false}
-            data={['10', '20', '30']}
-            defaultValue={itemsPerPage ? itemsPerPage.value : (searchParams.get('limit') ?? '10')}
-            label="Объявлений на странице"
-            onChange={(_value, option) => handlePerPageSelectChange(option)}
-            value={itemsPerPage ? itemsPerPage.value : (searchParams.get('limit') ?? '10')}
-          />
-          <Button onClick={open}>Создать новое объявление</Button>
-        </Flex>
-        <Flex direction={'column'} gap={'lg'}>
-          {pageLoaderData.data.map((item) => (
-            <AdvertisementCard item={item} key={item.id} />
-          ))}
+        <Title order={1} py={'lg'}>
+          Ваши объявления
+        </Title>
+        <Flex direction={{ base: 'column', lg: 'row-reverse' }} gap={'lg'}>
+          <Flex
+            align={{ base: 'normal', lg: 'normal', md: 'end', sm: 'end' }}
+            direction={{ base: 'column', lg: 'column', md: 'row', sm: 'row' }}
+            gap={'lg'}
+            pb={'sm'}
+          >
+            <Select
+              allowDeselect={false}
+              data={['10', '20', '30']}
+              defaultValue={itemsPerPage ? itemsPerPage.value : (searchParams.get('limit') ?? '10')}
+              label="Объявлений на странице"
+              onChange={(_value, option) => handlePerPageSelectChange(option)}
+              value={itemsPerPage ? itemsPerPage.value : (searchParams.get('limit') ?? '10')}
+            />
+            <TextInput
+              flex={{ base: 0, lg: 0, md: 1, sm: 1 }}
+              onChange={(event) => {
+                setSearchValue(event.currentTarget.value);
+                debouncedSearch(event.currentTarget.value);
+              }}
+              placeholder="Поиск по названию"
+              value={searchValue}
+            />
+            <Button onClick={open}>Создать новое объявление</Button>
+          </Flex>
+
+          <Flex direction={'column'} gap={'lg'} w={'100%'}>
+            {pageLoaderData.data.map((item) => (
+              <AdvertisementCard item={item} key={item.id} />
+            ))}
+          </Flex>
         </Flex>
       </Container>
 
