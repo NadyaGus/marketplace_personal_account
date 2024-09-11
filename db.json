@@ -3,12 +3,12 @@
     {
       "id": "1",
       "name": "Стул старинный",
-      "description": "Очень красивый!",
+      "description": "Очень красивый!!!",
       "price": 2000,
       "createdAt": "2022-08-12T20:16:55.351Z",
       "views": 20,
       "likes": 2,
-      "imageUrl": ""
+      "imageUrl": "https://http.cat/images/100.jpg"
     },
     {
       "id": "2",

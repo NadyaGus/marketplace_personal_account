@@ -1,21 +1,37 @@
-import type { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { type ReactNode, useState } from 'react';
+import { Link, useNavigation } from 'react-router-dom';
 
-import { Badge, Flex, Image, Skeleton, Text, Title } from '@mantine/core';
+import { Badge, Button, Collapse, Flex, Image, Skeleton, Text, Title } from '@mantine/core';
 
 import type { Advertisment } from '@/types';
 
+import placeholderImage from './assets/placeholder.png';
+
 import classes from './advertisementCard.module.css';
 
+const MAX_LENGTH_DESCRIPTION = 200;
+
 export const AdvertisementCard = ({ item }: { item: Advertisment }): ReactNode => {
+  const [showMore, setShowMore] = useState(false);
+  const navigation = useNavigation();
+
   return (
     <Link className={classes.link} to={`/advertisements/${item.id}`}>
-      <Flex className={classes.card}>
-        <Flex direction={'column'}>
-          {/*TODO: add placeholder */}
-          {item.imageUrl === '' && <Skeleton h={200} visible={item.imageUrl === ''} w={300} />}
-          {item.imageUrl !== '' && <Image alt={item.name} src={item.imageUrl} w={300} />}
-          <Flex gap={'sm'}>
+      <Flex align={'start'} className={classes.card} direction={{ base: 'column', sm: 'row' }} gap={'lg'}>
+        <Flex direction={'column'} maw={{ base: '100%', sm: 360 }} w={{ base: '100%', sm: '50%' }}>
+          <Skeleton h={200} radius={'0.5rem'} visible={navigation.state === 'loading'} w={'100%'}>
+            {
+              <Image
+                alt={item.name}
+                h={200}
+                radius={'0.5rem'}
+                src={item.imageUrl ? item.imageUrl : placeholderImage}
+                w={'100%'}
+              />
+            }
+          </Skeleton>
+
+          <Flex direction={{ base: 'column', sm: 'row' }} gap={'sm'} pt={'lg'}>
             <Badge color="pink" variant="light">
               Просмотры: {item.views ?? 0}
             </Badge>
@@ -26,17 +42,43 @@ export const AdvertisementCard = ({ item }: { item: Advertisment }): ReactNode =
           </Flex>
         </Flex>
 
-        <Flex direction={'column'} justify="start" mb="xs" mt="md">
+        <Flex direction={'column'} justify="start" m={0} w={{ base: '100%', lg: '100%', sm: '50%' }}>
           <Flex direction={'column'}>
-            <Title fw={500} order={3}>
+            <Title c={'blue.8'} className={classes.title} fw={500} mb={'sm'} order={3}>
               {item.name}
             </Title>
-            <Text>Цена: {item.price}</Text>
+            <Text mb={'sm'}>Цена: {item.price}</Text>
           </Flex>
 
-          <Text c="dimmed" size="sm">
-            {item.description}
+          <Text c={'dimmed'}>
+            {!showMore
+              ? item.description?.substring(0, MAX_LENGTH_DESCRIPTION) &&
+                item.description?.length > MAX_LENGTH_DESCRIPTION
+                ? item.description?.substring(0, MAX_LENGTH_DESCRIPTION) + '...'
+                : item.description
+              : null}
           </Text>
+
+          <Collapse c="dimmed" in={showMore}>
+            {showMore
+              ? item.description
+              : item.description && item.description?.length > MAX_LENGTH_DESCRIPTION
+                ? item.description?.substring(0, MAX_LENGTH_DESCRIPTION) + '...'
+                : item.description}
+          </Collapse>
+
+          {item.description && item.description?.length > MAX_LENGTH_DESCRIPTION ? (
+            <Button
+              mt={'sm'}
+              onClick={(e) => {
+                e.preventDefault();
+                setShowMore(!showMore);
+              }}
+              w={200}
+            >
+              {showMore ? 'Скрыть' : 'Показать больше'}
+            </Button>
+          ) : null}
         </Flex>
       </Flex>
     </Link>
