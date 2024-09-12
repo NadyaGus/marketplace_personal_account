@@ -17,13 +17,15 @@ export const PaginationWidget = (props: PaginationProps): ReactNode => {
     navigate(`?${searchParams.toString()}`);
   };
 
-  return (
-    <Pagination
-      mt="sm"
-      onChange={handlePaginationChange}
-      pt={'lg'}
-      total={props.pages}
-      value={searchParams.get('page') ? Number(searchParams.get('page')) : 1}
-    />
-  );
+  if (props.pages > 1) {
+    return (
+      <Pagination
+        mt="sm"
+        onChange={handlePaginationChange}
+        pt={'lg'}
+        total={props.pages}
+        value={searchParams.get('page') ? Number(searchParams.get('page')) : 1}
+      />
+    );
+  }
 };
