@@ -3,14 +3,15 @@ import type { ComboboxItem } from '@mantine/core';
 import { type ReactNode, useState } from 'react';
 import { useLoaderData, useNavigate, useSearchParams } from 'react-router-dom';
 
-import { Button, Container, Flex, Select, TextInput, Title } from '@mantine/core';
-import { useDebouncedCallback, useDisclosure } from '@mantine/hooks';
+import { Button, Container, Flex, Select, Title } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 
 import { AdvertisementCard } from '@/entities/advertisement';
 import { PaginationWidget } from '@/widgets/pagination';
 
 import { parseLoaderResponse } from '../model/parseLoaderResponse';
 import { CreateAdvertisementModal } from './modal/CreateAdvertisementModal';
+import { Search } from './search/Search';
 
 export const AdvertisementsListPage = (): ReactNode => {
   const pageLoaderData = useLoaderData();
@@ -22,8 +23,6 @@ export const AdvertisementsListPage = (): ReactNode => {
 
   const [itemsPerPage, setItemsPerPage] = useState<ComboboxItem | null>(null);
 
-  const [searchValue, setSearchValue] = useState<string>(searchParams.get('q') ?? '');
-
   const [opened, { close, open }] = useDisclosure(false);
 
   const handlePerPageSelectChange = (option: ComboboxItem): void => {
@@ -32,11 +31,6 @@ export const AdvertisementsListPage = (): ReactNode => {
     searchParams.set('limit', option.value);
     navigate(`?${searchParams.toString()}`);
   };
-
-  const debouncedSearch = useDebouncedCallback((value: string) => {
-    searchParams.set('q', value);
-    navigate(`?${searchParams.toString()}`);
-  }, 1000);
 
   return (
     <>
@@ -59,22 +53,22 @@ export const AdvertisementsListPage = (): ReactNode => {
               onChange={(_value, option) => handlePerPageSelectChange(option)}
               value={itemsPerPage ? itemsPerPage.value : (searchParams.get('limit') ?? '10')}
             />
-            <TextInput
-              flex={{ base: 0, lg: 0, md: 1, sm: 1 }}
-              onChange={(event) => {
-                setSearchValue(event.currentTarget.value);
-                debouncedSearch(event.currentTarget.value);
-              }}
-              placeholder="Поиск по названию"
-              value={searchValue}
-            />
+
+            <Search />
+
             <Button onClick={open}>Создать новое объявление</Button>
           </Flex>
 
           {data.length === 0 && (
             <Flex align={'start'} direction={'column'} gap={'lg'} mt={'2rem'}>
-              <Title order={4}>Что-то пошло не так</Title>
-              <Button onClick={() => navigate(-1)}>Назад</Button>
+              <Title order={4}>Ничего не найдено</Title>
+              <Button
+                onClick={() => {
+                  navigate(-1);
+                }}
+              >
+                Назад
+              </Button>
             </Flex>
           )}
 
