@@ -6,8 +6,6 @@ import { Loader, LoadingOverlay } from '@mantine/core';
 import { Footer } from '@/widgets/footer';
 import { Header } from '@/widgets/header';
 
-import { APP_ROUTES } from '../routers';
-
 import classes from './layout.module.css';
 
 export const Layout = (): ReactNode => {
@@ -15,7 +13,7 @@ export const Layout = (): ReactNode => {
 
   return (
     <>
-      <Header links={[APP_ROUTES.advertisements, APP_ROUTES.orders]} />
+      <Header />
       <main className={classes.main}>
         <Outlet />
       </main>
