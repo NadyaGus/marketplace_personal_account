@@ -17,6 +17,7 @@ export const useFilters = (): {
     }
 
     searchParams.set('status_ne', `${Array.from(filters.values()).join(',')}`);
+    searchParams.set('page', '1');
     navigate(`?${searchParams.toString()}`);
   };
 

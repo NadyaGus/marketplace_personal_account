@@ -5,15 +5,16 @@ import { useLoaderData, useNavigate, useSearchParams } from 'react-router-dom';
 
 import { Container, Grid, Select, Title } from '@mantine/core';
 
-import type { Order } from '@/types';
-
 import { OrderCard } from '@/entities/order';
+import { PaginationWidget } from '@/widgets/pagination';
+
+import type { OrdersPageResponse } from '../types';
 
 import { sortOrderValues } from '../types';
 import { Filters } from './filters/Filters';
 
 export const OrdersListPage = (): ReactNode => {
-  const data = useLoaderData() as Order[];
+  const data = useLoaderData() as OrdersPageResponse;
 
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -49,10 +50,12 @@ export const OrdersListPage = (): ReactNode => {
         />
 
         <Grid gutter={'lg'}>
-          {data.map((item) => (
+          {data.data.map((item) => (
             <OrderCard key={item.id} order={item} />
           ))}
         </Grid>
+
+        <PaginationWidget pages={Math.ceil(data.total / 12)} />
       </Container>
     </>
   );
