@@ -2,12 +2,12 @@ import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Burger, Container, Drawer, Flex, Group, Image, Paper } from '@mantine/core';
+import { Burger, Container, Drawer, Flex, Group, Image, Paper, Title } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
 import type { HeaderLink } from '../types';
 
-import logo from './assets/Avito_logo.svg';
+import logo from './assets/lapky.png';
 
 import classes from './header.module.css';
 
@@ -58,8 +58,13 @@ export const Header = (): ReactNode => {
     <header className={classes.header}>
       <Paper radius={0} shadow="sm">
         <Container className={classes.inner} maw={1280} px={'lg'}>
-          <Link to="/">
-            <Image alt="logo" src={logo} w={100} />
+          <Link className={classes.link} to="/">
+            <Flex align="center" gap={16}>
+              <Image alt="logo" src={logo} w={40} />
+              <Title className={classes.title} order={3}>
+                Лапки Маркет
+              </Title>
+            </Flex>
           </Link>
 
           <Group gap={5} visibleFrom="xs">

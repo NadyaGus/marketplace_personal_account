@@ -47,7 +47,7 @@ export const AdvertisementCard = ({ item }: { item: Advertisment }): ReactNode =
               <Title c={'blue.8'} className={classes.title} fw={500} mb={'sm'} order={3}>
                 {item.name}
               </Title>
-              <Text mb={'sm'}>Цена: {item.price}</Text>
+              <Text mb={'sm'}>Цена: {item.price} ₽</Text>
             </Flex>
 
             <Text c={'dimmed'}>

@@ -70,7 +70,7 @@ export const AdvertisementPage = (): ReactNode => {
           </Skeleton>
 
           <Flex direction={'column'} gap={'lg'} justify="start" m={0} w={{ base: '100%', md: '50%' }}>
-            <Title order={3}>Цена: {isAdvertisement.price}</Title>
+            <Title order={3}>Цена: {isAdvertisement.price} ₽</Title>
 
             <Flex gap={'lg'}>
               <Badge color="pink" size="lg" variant="light">

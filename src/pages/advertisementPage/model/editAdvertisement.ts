@@ -17,7 +17,7 @@ export const editAdvertisement = async ({
       imageUrl: advertisement.imageUrl ?? '',
       likes: advertisement.likes ?? 0,
       name: advertisement.name,
-      price: advertisement.price,
+      price: advertisement.price ? Number(advertisement.price) : 0,
       views: advertisement.views ?? 0,
     }),
     headers: {
