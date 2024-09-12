@@ -1,12 +1,8 @@
 .main {
   max-width: 1280px;
   margin: 0 auto;
-  margin-top: 5rem;
-  min-height: calc(100lvh - 5rem - 2rem);
-  /* 5rem - header height, 2rem - footer height */
+  margin-top: 3rem;
+  min-height: calc(100lvh - 5rem - 4rem);
+  /* 5rem - header height, 4rem - footer height */
   padding-bottom: 2rem;
-}
-
-.footer {
-  height: 4rem;
 }

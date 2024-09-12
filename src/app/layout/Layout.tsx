@@ -3,6 +3,7 @@ import { Outlet, useNavigation } from 'react-router-dom';
 
 import { Loader, LoadingOverlay } from '@mantine/core';
 
+import { Footer } from '@/widgets/footer';
 import { Header } from '@/widgets/header';
 
 import { APP_ROUTES } from '../routers';
@@ -24,7 +25,7 @@ export const Layout = (): ReactNode => {
         visible={navigation.state === 'loading'}
         zIndex={1}
       />
-      <footer className={classes.footer}>Footer</footer>
+      <Footer />
     </>
   );
 };
