@@ -9,12 +9,13 @@ import { useDebouncedCallback, useDisclosure } from '@mantine/hooks';
 import { AdvertisementCard } from '@/entities/advertisement';
 import { PaginationWidget } from '@/widgets/pagination';
 
-import type { AdvertisementPageResponse } from '../types';
-
+import { parseLoaderResponse } from '../model/parseLoaderResponse';
 import { CreateAdvertisementModal } from './modal/CreateAdvertisementModal';
 
 export const AdvertisementsListPage = (): ReactNode => {
-  const pageLoaderData = useLoaderData() as AdvertisementPageResponse;
+  const pageLoaderData = useLoaderData();
+  const parsedData = parseLoaderResponse(pageLoaderData);
+  const { data, total } = parsedData;
 
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -71,13 +72,13 @@ export const AdvertisementsListPage = (): ReactNode => {
           </Flex>
 
           <Flex direction={'column'} gap={'lg'} w={'100%'}>
-            {pageLoaderData.data.map((item) => (
+            {data.map((item) => (
               <AdvertisementCard item={item} key={item.id} />
             ))}
           </Flex>
         </Flex>
 
-        <PaginationWidget pages={Math.ceil(+pageLoaderData.total / (Number(searchParams.get('limit')) || 10))} />
+        <PaginationWidget pages={Math.ceil(+total / (Number(searchParams.get('limit')) || 10))} />
       </Container>
 
       <CreateAdvertisementModal close={close} opened={opened} />

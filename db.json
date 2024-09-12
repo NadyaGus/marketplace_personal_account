@@ -71,7 +71,7 @@
     {
       "id": "8",
       "name": "Новый айфон",
-      "price": "1000001",
+      "price": 1000001,
       "createdAt": "2024-08-12T12:16:55.351Z",
       "views": 200000,
       "likes": 302,
@@ -79,208 +79,24 @@
       "description": "Очень крутой"
     },
     {
-      "id": "7fbd",
-      "createdAt": "2024-09-08T14:29:03.352Z",
-      "imageUrl": "",
-      "name": "Котик",
-      "price": "10"
-    },
-    {
-      "id": "1468",
-      "createdAt": "2024-09-08T14:46:02.950Z",
-      "imageUrl": "",
-      "name": "Тесст",
-      "price": "20"
-    },
-    {
-      "id": "e529",
-      "createdAt": "2024-09-08T14:51:43.512Z",
-      "imageUrl": "",
-      "name": "ntcn2",
-      "price": "200"
-    },
-    {
-      "id": "aaeb",
-      "createdAt": "2024-09-08T14:54:41.336Z",
-      "imageUrl": "",
-      "name": "Nadas",
-      "price": "201"
-    },
-    {
-      "id": "937b",
-      "createdAt": "2024-09-08T14:59:18.311Z",
-      "imageUrl": "",
-      "name": "nea1w",
-      "price": "1000"
-    },
-    {
-      "id": "cf0c",
-      "createdAt": "2024-09-08T15:00:03.810Z",
-      "imageUrl": "",
+      "createdAt": "2024-09-12T10:32:56.498Z",
+      "description": "123",
+      "imageUrl": "12",
+      "likes": 0,
       "name": "12345",
-      "price": "12345"
+      "price": 123,
+      "views": 0,
+      "id": "sM-oQ3W"
     },
     {
-      "id": "5daa",
-      "createdAt": "2024-09-08T15:06:42.170Z",
+      "createdAt": "2024-09-12T10:35:05.969Z",
+      "description": "",
       "imageUrl": "",
-      "name": "Test23",
-      "price": "2323"
-    },
-    {
-      "id": "7e24",
-      "createdAt": "2024-09-08T15:10:30.706Z",
-      "imageUrl": "",
-      "name": "12345",
-      "price": "1234"
-    },
-    {
-      "id": "28b6",
-      "createdAt": "2024-09-08T15:13:12.755Z",
-      "imageUrl": "",
-      "name": "12345",
-      "price": "123"
-    },
-    {
-      "id": "d982",
-      "createdAt": "2024-09-08T15:13:41.439Z",
-      "imageUrl": "",
-      "name": "12345",
-      "price": "123"
-    },
-    {
-      "id": "ebd2",
-      "createdAt": "2024-09-08T15:15:33.795Z",
-      "imageUrl": "",
-      "name": "12345",
-      "price": "1"
-    },
-    {
-      "id": "233d",
-      "createdAt": "2024-09-08T15:16:36.577Z",
-      "imageUrl": "",
-      "name": "12345",
-      "price": "1"
-    },
-    {
-      "id": "c04a",
-      "createdAt": "2024-09-08T15:25:46.402Z",
-      "imageUrl": "",
-      "name": "qwertyt",
-      "price": "1010"
-    },
-    {
-      "id": "648d",
-      "createdAt": "2024-09-08T16:43:40.579Z",
-      "imageUrl": "",
-      "name": "asdsf",
-      "price": "1010"
-    },
-    {
-      "id": "0551",
-      "createdAt": "2024-09-08T16:43:40.579Z",
-      "imageUrl": "",
-      "name": "asdsf",
-      "price": "1010"
-    },
-    {
-      "id": "7821",
-      "createdAt": "2024-09-08T16:43:40.579Z",
-      "imageUrl": "",
-      "name": "asdsf",
-      "price": "1010"
-    },
-    {
-      "id": "cd88",
-      "createdAt": "2024-09-08T16:43:40.579Z",
-      "imageUrl": "",
-      "name": "asdsf",
-      "price": "1010"
-    },
-    {
-      "id": "81a5",
-      "createdAt": "2024-09-08T16:43:40.579Z",
-      "imageUrl": "",
-      "name": "asdsf",
-      "price": "1010"
-    },
-    {
-      "id": "31b3",
-      "createdAt": "2024-09-08T16:43:40.579Z",
-      "imageUrl": "",
-      "name": "asdsf",
-      "price": "1010"
-    },
-    {
-      "id": "9ba1",
-      "createdAt": "2024-09-08T16:43:40.579Z",
-      "imageUrl": "",
-      "name": "asdsf",
-      "price": "1010"
-    },
-    {
-      "id": "ba5c",
-      "createdAt": "2024-09-08T16:43:40.579Z",
-      "imageUrl": "",
-      "name": "asdsf",
-      "price": "1010"
-    },
-    {
-      "id": "ce76",
-      "createdAt": "2024-09-08T16:58:29.434Z",
-      "imageUrl": "",
-      "name": "12345",
-      "price": "10"
-    },
-    {
-      "id": "0d79",
-      "createdAt": "2024-09-08T17:00:09.287Z",
-      "imageUrl": "",
-      "name": "12345",
-      "price": "10100",
-      "description": ""
-    },
-    {
-      "id": "c4fe",
-      "createdAt": "2024-09-08T17:00:19.275Z",
-      "imageUrl": "",
-      "name": "12345",
-      "price": "1010"
-    },
-    {
-      "id": "9d86",
-      "createdAt": "2024-09-08T17:20:40.338Z",
-      "imageUrl": "",
+      "likes": 0,
       "name": "54321",
-      "price": "222"
-    },
-    {
-      "id": "675e",
-      "createdAt": "2024-09-08T18:26:03.646Z",
-      "imageUrl": "",
-      "name": "55555",
-      "price": "1000"
-    },
-    {
-      "createdAt": "2024-09-08T20:38:20.922Z",
-      "imageUrl": "",
-      "name": "111111",
-      "price": "1111",
-      "id": "7trWHF9"
-    },
-    {
-      "createdAt": "2024-09-08T20:38:20.922Z",
-      "imageUrl": "",
-      "name": "11111",
-      "price": "01111",
-      "id": "pS74f-v"
-    },
-    {
-      "createdAt": "2024-09-10T10:16:04.345Z",
-      "imageUrl": "",
-      "name": "1234567",
-      "price": "1234567",
-      "id": "z4ZUA4m"
+      "price": 1000,
+      "views": 0,
+      "id": "zZ4syFl"
     }
   ],
   "orders": [

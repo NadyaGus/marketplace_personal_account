@@ -12,16 +12,18 @@ export const editAdvertisement = async ({
 }): Promise<Response | void> => {
   return await fetch(`${API_URL}${APP_ROUTES.advertisements.link}/${id}`, {
     body: JSON.stringify({
-      description: advertisement.description,
-      id,
-      imageUrl: advertisement.imageUrl,
+      createdAt: advertisement.createdAt ?? new Date().toISOString(),
+      description: advertisement.description ?? '',
+      imageUrl: advertisement.imageUrl ?? '',
+      likes: advertisement.likes ?? 0,
       name: advertisement.name,
       price: advertisement.price,
+      views: advertisement.views ?? 0,
     }),
     headers: {
       'Content-Type': 'application/json',
     },
-    method: 'PATCH',
+    method: 'PUT',
   }).catch((error) => {
     console.error(error);
   });

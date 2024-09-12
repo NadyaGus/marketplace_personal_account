@@ -1,64 +1,75 @@
-/* eslint-disable perfectionist/sort-intersection-types */
-/* eslint-disable @typescript-eslint/array-type */
-/* eslint-disable perfectionist/sort-objects */
-/* eslint-disable perfectionist/sort-object-types */
-/* eslint-disable @typescript-eslint/consistent-type-definitions */
-
-// Отключение линтера, чтобы типы четко соответствовали схеме API в ТЗ.
-
-export type Advertisment = {
-  /* Уникальный идентификатор. */
-  id: string;
-  /* Название. */
-  name: string;
+export interface Advertisment {
+  /* Дата и время создания. */
+  createdAt: string;
   /* Описание. */
   description?: string;
-  /* Цена. */
-  price: number;
-  /* Дата и время создания. */
-  createdAt: string;
-  /* Количество просмотров. */
-  views: number;
-  /* Количество лайков. */
-  likes: number;
-  /* Ссылка на изображение. */
-  imageUrl?: string;
-};
-
-export const OrderStatus = {
-  Created: 0,
-  Paid: 1,
-  Transport: 2,
-  DeliveredToThePoint: 3,
-  Received: 4,
-  Archived: 5,
-  Refund: 6,
-} as const;
-
-type OrderItem = Advertisment & { count: number };
-
-export type Order = {
   /* Уникальный идентификатор. */
   id: string;
-  /* Статус. */
-  status: (typeof OrderStatus)[keyof typeof OrderStatus];
-  /* Дата и время создания. */
-  createdAt: string;
-  /* Дата и время завершения. */
-  finishedAt?: string;
-  /* Товары в заказе. */
-  items: Array<OrderItem>;
-  /* Способ доставки(Почта, СДЭК...) */
-  deliveryWay: string;
-  /* Сумма заказа */
-  total: number;
-};
-
-export type Image = {
-  /* Уникальный идентификатор. */
-  id: number;
-  /* Ссылка. */
-  url: string;
+  /* Ссылка на изображение. */
+  imageUrl?: string;
+  /* Количество лайков. */
+  likes: number;
   /* Название. */
   name: string;
-};
+  /* Цена. */
+  price: number;
+  /* Количество просмотров. */
+  views: number;
+}
+
+export interface AdvertismentResponse {
+  /* Дата и время создания. */
+  createdAt: string;
+  /* Описание. */
+  description?: string;
+  /* Уникальный идентификатор. */
+  id: string;
+  /* Ссылка на изображение. */
+  imageUrl?: string;
+  /* Количество лайков. */
+  likes: string;
+  /* Название. */
+  name: string;
+  /* Цена. */
+  price: string;
+  /* Количество просмотров. */
+  views: string;
+}
+
+export const OrderStatus = {
+  Archived: 5,
+  Created: 0,
+  DeliveredToThePoint: 3,
+  Paid: 1,
+  Received: 4,
+  Refund: 6,
+  Transport: 2,
+} as const;
+
+type OrderItem = { count: number } & Advertisment;
+
+export interface Order {
+  /* Дата и время создания. */
+  createdAt: string;
+  /* Способ доставки(Почта, СДЭК...) */
+  deliveryWay: string;
+  /* Дата и время завершения. */
+  finishedAt?: string;
+  /* Уникальный идентификатор. */
+  id: string;
+  /* Товары в заказе. */
+  items: OrderItem[];
+  /* Статус. */
+  status: (typeof OrderStatus)[keyof typeof OrderStatus];
+  /* Сумма заказа */
+  total: number;
+}
+
+export interface Image {
+  /* Уникальный идентификатор. */
+  id: number;
+  /* Название. */
+  name: string;
+  /* Ссылка. */
+  url: string;
+}

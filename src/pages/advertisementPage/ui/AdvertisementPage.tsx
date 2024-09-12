@@ -5,14 +5,13 @@ import placeholderImage from '@/../public/placeholder.png';
 import { Badge, Button, Collapse, Container, Flex, Image, Skeleton, Text, Title } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
-import type { Advertisment } from '@/types';
-
+import { parseAdvertisementData } from '../model/parseAdvertisementData';
 import { EditAdvertisementModal } from './modal/EditAdvertisementModal';
 
 const MAX_LENGTH_DESCRIPTION = 200;
 
 export const AdvertisementPage = (): ReactNode => {
-  const data = useLoaderData() as Advertisment;
+  const data = useLoaderData();
   const [showMore, setShowMore] = useState(false);
   const navigation = useNavigation();
   const navigate = useNavigate();
@@ -21,7 +20,9 @@ export const AdvertisementPage = (): ReactNode => {
 
   window.scrollTo(0, 0);
 
-  if (!data.id) {
+  const isAdvertisement = parseAdvertisementData(data);
+
+  if (!isAdvertisement.id) {
     return (
       <Flex align={'center'} direction={'column'} justify={'center'} p={'20vh'}>
         <Title order={1} ta={'center'}>
@@ -44,7 +45,7 @@ export const AdvertisementPage = (): ReactNode => {
           justify={'space-between'}
           py={'lg'}
         >
-          <Title order={1}>{data.name}</Title>
+          <Title order={1}>{isAdvertisement.name}</Title>
           <Button onClick={open} w={{ base: '100%', xs: 320 }}>
             Редактировать объявление
           </Button>
@@ -59,50 +60,50 @@ export const AdvertisementPage = (): ReactNode => {
           >
             {
               <Image
-                alt={data.name}
+                alt={isAdvertisement.name}
                 h={{ base: 400, md: 600 }}
                 radius={'0.5rem'}
-                src={data.imageUrl ? data.imageUrl : placeholderImage}
+                src={isAdvertisement.imageUrl ? isAdvertisement.imageUrl : placeholderImage}
                 w={'100%'}
               />
             }
           </Skeleton>
 
           <Flex direction={'column'} gap={'lg'} justify="start" m={0} w={{ base: '100%', md: '50%' }}>
-            <Title order={3}>Цена: {data.price}</Title>
+            <Title order={3}>Цена: {isAdvertisement.price}</Title>
 
             <Flex gap={'lg'}>
               <Badge color="pink" size="lg" variant="light">
-                Просмотры: {data.views ?? 0}
+                Просмотры: {isAdvertisement.views ?? 0}
               </Badge>
 
               <Badge color="pink" size="lg" variant="light">
-                Нравится: {data.likes ?? 0}
+                Нравится: {isAdvertisement.likes ?? 0}
               </Badge>
             </Flex>
 
             <Title order={3}>Описание</Title>
 
-            {!data.description || data.description === '' ? 'Описание отсутствует' : null}
+            {!isAdvertisement.description || isAdvertisement.description === '' ? 'Описание отсутствует' : null}
 
             <Text c={'dimmed'}>
               {!showMore
-                ? data.description?.substring(0, MAX_LENGTH_DESCRIPTION) &&
-                  data.description?.length > MAX_LENGTH_DESCRIPTION
-                  ? data.description?.substring(0, MAX_LENGTH_DESCRIPTION) + '...'
-                  : data.description
+                ? isAdvertisement.description?.substring(0, MAX_LENGTH_DESCRIPTION) &&
+                  isAdvertisement.description?.length > MAX_LENGTH_DESCRIPTION
+                  ? isAdvertisement.description?.substring(0, MAX_LENGTH_DESCRIPTION) + '...'
+                  : isAdvertisement.description
                 : null}
             </Text>
 
             <Collapse c="dimmed" in={showMore}>
               {showMore
-                ? data.description
-                : data.description && data.description?.length > MAX_LENGTH_DESCRIPTION
-                  ? data.description?.substring(0, MAX_LENGTH_DESCRIPTION) + '...'
-                  : data.description}
+                ? isAdvertisement.description
+                : isAdvertisement.description && isAdvertisement.description?.length > MAX_LENGTH_DESCRIPTION
+                  ? isAdvertisement.description?.substring(0, MAX_LENGTH_DESCRIPTION) + '...'
+                  : isAdvertisement.description}
             </Collapse>
 
-            {data.description && data.description?.length > MAX_LENGTH_DESCRIPTION ? (
+            {isAdvertisement.description && isAdvertisement.description?.length > MAX_LENGTH_DESCRIPTION ? (
               <Button
                 mt={'sm'}
                 onClick={() => {
@@ -116,7 +117,7 @@ export const AdvertisementPage = (): ReactNode => {
           </Flex>
         </Flex>
       </Container>
-      <EditAdvertisementModal advertisement={data} close={close} opened={opened} />
+      <EditAdvertisementModal advertisement={isAdvertisement} close={close} opened={opened} />
     </>
   );
 };
