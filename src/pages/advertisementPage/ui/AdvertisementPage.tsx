@@ -73,11 +73,11 @@ export const AdvertisementPage = (): ReactNode => {
 
             <Flex gap={'lg'}>
               <Badge color="pink" size="lg" variant="light">
-                Просмотры: {data.views}
+                Просмотры: {data.views ?? 0}
               </Badge>
 
               <Badge color="pink" size="lg" variant="light">
-                Нравится: {data.likes}
+                Нравится: {data.likes ?? 0}
               </Badge>
             </Flex>
 

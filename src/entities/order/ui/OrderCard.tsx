@@ -29,7 +29,7 @@ export const OrderCard = ({ order }: { order: Order }): ReactNode => {
 
   return (
     <GridCol span={{ base: 12, md: 4, sm: 6 }}>
-      <Paper p={'lg'} shadow="md">
+      <Paper className={classes.card} p={'lg'} shadow="md">
         <Flex direction={'column'} gap={'lg'}>
           <Flex direction={'column'}>
             <Title fw={500} mb={'sm'} order={3}>
@@ -40,26 +40,46 @@ export const OrderCard = ({ order }: { order: Order }): ReactNode => {
             </Badge>
           </Flex>
 
-          <Text>Сумма заказа: {order.total} ₽</Text>
-          <Text>Дата создания: {order.createdAt}</Text>
+          <Flex>
+            <Text fw={500} mr={'sm'}>
+              Сумма заказа:
+            </Text>
+            {order.total} ₽
+          </Flex>
 
-          <Text>Количество товаров: {order.items.length}</Text>
+          <Flex>
+            <Text fw={500} mr={'sm'}>
+              Дата создания:
+            </Text>{' '}
+            {new Date(order.createdAt).toLocaleString()}
+          </Flex>
 
-          <Button onClick={toggle}>Показать список товаров</Button>
+          <Flex>
+            <Text fw={500} mr={'sm'}>
+              Количество товаров:
+            </Text>{' '}
+            {order.items.length}
+          </Flex>
 
-          <Collapse in={opened}>
-            <Flex direction={'column'}>
-              {order.items.map((order) => (
-                <Link className={classes.link} key={order.id} to={`/advertisements/${order.id}`}>
-                  {order.name}
-                </Link>
-              ))}
-            </Flex>
-          </Collapse>
+          <Flex direction={'column'} gap={'xs'}>
+            <Button onClick={toggle}>Показать список товаров</Button>
 
-          <Button disabled={isComplete} onClick={() => void toggleComplete()}>
-            {isComplete ? 'Заказ завершен' : 'Завершить заказ'}
-          </Button>
+            <Collapse in={opened}>
+              <Paper className={classes.paper} p={'sm'} withBorder>
+                <Flex direction={'column'}>
+                  {order.items.map((order) => (
+                    <Link className={classes.link} key={order.id} to={`/advertisements/${order.id}`}>
+                      {order.name}
+                    </Link>
+                  ))}
+                </Flex>
+              </Paper>
+            </Collapse>
+
+            <Button disabled={isComplete} onClick={() => void toggleComplete()}>
+              {isComplete ? 'Заказ завершен' : 'Завершить заказ'}
+            </Button>
+          </Flex>
         </Flex>
       </Paper>
     </GridCol>

@@ -19,10 +19,10 @@ export const Layout = (): ReactNode => {
         <Outlet />
       </main>
       <LoadingOverlay
-        className={classes.loader}
         loaderProps={{ children: <Loader /> }}
         pos={'fixed'}
         visible={navigation.state === 'loading'}
+        zIndex={1}
       />
       <footer className={classes.footer}>Footer</footer>
     </>
