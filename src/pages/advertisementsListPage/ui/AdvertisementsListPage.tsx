@@ -71,6 +71,13 @@ export const AdvertisementsListPage = (): ReactNode => {
             <Button onClick={open}>Создать новое объявление</Button>
           </Flex>
 
+          {data.length === 0 && (
+            <Flex align={'start'} direction={'column'} gap={'lg'} mt={'2rem'}>
+              <Title order={4}>Что-то пошло не так</Title>
+              <Button onClick={() => navigate(-1)}>Назад</Button>
+            </Flex>
+          )}
+
           <Flex direction={'column'} gap={'lg'} w={'100%'}>
             {data.map((item) => (
               <AdvertisementCard item={item} key={item.id} />
@@ -78,7 +85,7 @@ export const AdvertisementsListPage = (): ReactNode => {
           </Flex>
         </Flex>
 
-        <PaginationWidget pages={Math.ceil(+total / (Number(searchParams.get('limit')) || 10))} />
+        {data.length > 0 && <PaginationWidget pages={Math.ceil(+total / (Number(searchParams.get('limit')) || 10))} />}
       </Container>
 
       <CreateAdvertisementModal close={close} opened={opened} />

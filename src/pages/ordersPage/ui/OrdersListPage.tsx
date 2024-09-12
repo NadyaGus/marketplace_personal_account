@@ -3,7 +3,7 @@ import type { ComboboxItem } from '@mantine/core';
 import { type ReactNode, useState } from 'react';
 import { useLoaderData, useNavigate, useSearchParams } from 'react-router-dom';
 
-import { Container, Grid, Select, Title } from '@mantine/core';
+import { Button, Container, Flex, Grid, Select, Title } from '@mantine/core';
 
 import { OrderCard } from '@/entities/order';
 import { PaginationWidget } from '@/widgets/pagination';
@@ -50,13 +50,20 @@ export const OrdersListPage = (): ReactNode => {
           w={200}
         />
 
+        {data.length === 0 && (
+          <Flex align={'start'} direction={'column'} gap={'lg'} mt={'2rem'}>
+            <Title order={4}>Что-то пошло не так</Title>
+            <Button onClick={() => navigate(-1)}>Назад</Button>
+          </Flex>
+        )}
+
         <Grid gutter={'lg'}>
           {data.map((item) => (
             <OrderCard key={item.id} order={item} />
           ))}
         </Grid>
 
-        <PaginationWidget pages={Math.ceil(total / 12)} />
+        {data.length > 0 && <PaginationWidget pages={Math.ceil(total / 12)} />}
       </Container>
     </>
   );
