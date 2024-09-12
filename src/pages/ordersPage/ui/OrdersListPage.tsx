@@ -3,7 +3,7 @@ import type { ComboboxItem } from '@mantine/core';
 import { type ReactNode, useState } from 'react';
 import { useLoaderData, useNavigate, useSearchParams } from 'react-router-dom';
 
-import { Button, Container, Flex, Grid, Select, Title } from '@mantine/core';
+import { Button, Container, Flex, Grid, Select, Text, Title } from '@mantine/core';
 
 import { OrderCard } from '@/entities/order';
 import { PaginationWidget } from '@/widgets/pagination';
@@ -33,16 +33,18 @@ export const OrdersListPage = (): ReactNode => {
       <Container maw={1280} p={'lg'}>
         <Title order={1}>Заказы</Title>
 
-        <Title order={4} pb={'lg'} pt={'lg'}>
-          Статус:
-        </Title>
-        <Filters />
+        <Flex direction={'column'} py={'lg'}>
+          <Text fw={500} fz={'sm'} pb={'lg'} pt={'lg'}>
+            Статус заказа:
+          </Text>
+          <Filters />
+        </Flex>
 
         <Select
           allowDeselect={false}
           data={[sortOrderValues.asc, sortOrderValues.desc]}
           defaultValue={searchParams.get('sort') ?? sortOrder?.value}
-          label="Сумма заказа"
+          label="Фильтровать по стоимости:"
           onChange={(_value, option) => handleSort(option)}
           pb={'2rem'}
           pt={'2rem'}

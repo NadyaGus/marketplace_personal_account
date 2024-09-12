@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const filters = new Set<number>();
+const initState = new URLSearchParams(window.location.search);
 
 export const useFilters = (): {
   filters: Set<number>;
@@ -8,6 +10,15 @@ export const useFilters = (): {
 } => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (initState.get('status_ne')) {
+      searchParams
+        .get('status_ne')!
+        .split(',')
+        .forEach((filter) => filters.add(Number(filter)));
+    }
+  }, [searchParams]);
 
   const handleFilter = (filter: number): void => {
     if (filters.has(filter)) {
