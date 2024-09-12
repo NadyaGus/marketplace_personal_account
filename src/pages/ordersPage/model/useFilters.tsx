@@ -9,14 +9,20 @@ export const useFilters = (): {
   handleFilter: (filter: number) => void;
 } => {
   const [searchParams] = useSearchParams();
+  const path = window.location.pathname;
   const navigate = useNavigate();
 
   useEffect(() => {
+    filters.clear();
+  }, [path]);
+
+  useEffect(() => {
     if (initState.get('status_ne')) {
-      searchParams
-        .get('status_ne')!
-        .split(',')
-        .forEach((filter) => filters.add(Number(filter)));
+      const params = searchParams.get('status_ne') ?? '';
+
+      if (params.length > 0) {
+        params.split(',').forEach((filter) => filters.add(Number(filter)));
+      }
     }
   }, [searchParams]);
 

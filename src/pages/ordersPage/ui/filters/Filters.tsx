@@ -10,7 +10,9 @@ import { useFilters } from '../../model/useFilters';
 
 export const Filters = (): ReactNode => {
   const searchParams = useSearchParams()[0];
-  const filtersValue = searchParams.get('status_ne')?.split(',');
+
+  const params = searchParams.get('status_ne') ?? '';
+  const filtersValue = params.split(',');
 
   const [checkArchived, setCheckedArchived] = useState(!filtersValue?.includes(`${OrderStatus.Archived}`));
   const [checkCreated, setCheckedCreated] = useState(!filtersValue?.includes(`${OrderStatus.Created}`));
@@ -27,7 +29,7 @@ export const Filters = (): ReactNode => {
   return (
     <Flex gap={'lg'} wrap={'wrap'}>
       <Checkbox
-        checked={checkArchived}
+        checked={!filtersValue?.includes(`${OrderStatus.Archived}`)}
         label={OrderStatusParse[OrderStatus.Archived]}
         onChange={() => {
           setCheckedArchived(!checkArchived);
@@ -36,7 +38,7 @@ export const Filters = (): ReactNode => {
         w={120}
       />
       <Checkbox
-        checked={checkCreated}
+        checked={!filtersValue?.includes(`${OrderStatus.Created}`)}
         label={OrderStatusParse[OrderStatus.Created]}
         onChange={() => {
           setCheckedCreated(!checkCreated);
@@ -45,7 +47,7 @@ export const Filters = (): ReactNode => {
         w={120}
       />
       <Checkbox
-        checked={checkDeliveredToThePoint}
+        checked={!filtersValue?.includes(`${OrderStatus.DeliveredToThePoint}`)}
         label={OrderStatusParse[OrderStatus.DeliveredToThePoint]}
         onChange={() => {
           setCheckedDeliveredToThePoint(!checkDeliveredToThePoint);
@@ -54,7 +56,7 @@ export const Filters = (): ReactNode => {
         w={120}
       />
       <Checkbox
-        checked={checkPaid}
+        checked={!filtersValue?.includes(`${OrderStatus.Paid}`)}
         label={OrderStatusParse[OrderStatus.Paid]}
         onChange={() => {
           setCheckedPaid(!checkPaid);
@@ -63,7 +65,7 @@ export const Filters = (): ReactNode => {
         w={120}
       />
       <Checkbox
-        checked={checkReceived}
+        checked={!filtersValue?.includes(`${OrderStatus.Received}`)}
         label={OrderStatusParse[OrderStatus.Received]}
         onChange={() => {
           setCheckedReceived(!checkReceived);
@@ -72,7 +74,7 @@ export const Filters = (): ReactNode => {
         w={120}
       />
       <Checkbox
-        checked={checkRefund}
+        checked={!filtersValue?.includes(`${OrderStatus.Refund}`)}
         label={OrderStatusParse[OrderStatus.Refund]}
         onChange={() => {
           setCheckedRefund(!checkRefund);
@@ -81,7 +83,7 @@ export const Filters = (): ReactNode => {
         w={120}
       />
       <Checkbox
-        checked={checkTransport}
+        checked={!filtersValue?.includes(`${OrderStatus.Transport}`)}
         label={OrderStatusParse[OrderStatus.Transport]}
         onChange={() => {
           setCheckedTransport(!checkTransport);

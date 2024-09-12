@@ -25,6 +25,7 @@ export const OrdersListPage = (): ReactNode => {
   const handleSort = (option: ComboboxItem): void => {
     setSortOrder(option);
     searchParams.set('sort', option.value);
+    searchParams.set('page', '1');
     navigate(`?${searchParams.toString()}`);
   };
 
@@ -46,15 +47,15 @@ export const OrdersListPage = (): ReactNode => {
           defaultValue={searchParams.get('sort') ?? sortOrder?.value}
           label="Фильтровать по стоимости:"
           onChange={(_value, option) => handleSort(option)}
-          pb={'2rem'}
-          pt={'2rem'}
+          pb={'1rem'}
+          pt={'1rem'}
           value={searchParams.get('sort')}
           w={200}
         />
 
         {data.length === 0 && (
           <Flex align={'start'} direction={'column'} gap={'lg'} mt={'2rem'}>
-            <Title order={4}>Что-то пошло не так</Title>
+            <Title order={4}>Заказы не найдены</Title>
             <Button onClick={() => navigate(-1)}>Назад</Button>
           </Flex>
         )}
