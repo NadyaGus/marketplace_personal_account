@@ -8,13 +8,14 @@ import { Container, Grid, Select, Title } from '@mantine/core';
 import { OrderCard } from '@/entities/order';
 import { PaginationWidget } from '@/widgets/pagination';
 
-import type { OrdersPageResponse } from '../types';
-
+import { parseOrdersResponse } from '../model/parseLoaderResponse';
 import { sortOrderValues } from '../types';
 import { Filters } from './filters/Filters';
 
 export const OrdersListPage = (): ReactNode => {
-  const data = useLoaderData() as OrdersPageResponse;
+  const response = useLoaderData();
+  const parsedData = parseOrdersResponse(response);
+  const { data, total } = parsedData;
 
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -50,12 +51,12 @@ export const OrdersListPage = (): ReactNode => {
         />
 
         <Grid gutter={'lg'}>
-          {data.data.map((item) => (
+          {data.map((item) => (
             <OrderCard key={item.id} order={item} />
           ))}
         </Grid>
 
-        <PaginationWidget pages={Math.ceil(data.total / 12)} />
+        <PaginationWidget pages={Math.ceil(total / 12)} />
       </Container>
     </>
   );

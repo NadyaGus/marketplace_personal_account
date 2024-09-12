@@ -474,32 +474,32 @@
     },
     {
       "id": "13",
-      "status": 3,
+      "status": 5,
       "createdAt": "2024-08-12T20:20:55.351Z",
       "finishedAt": "",
       "total": 106000,
       "deliveryWay": "mail",
       "items": [
         {
+          "count": 3,
+          "createdAt": "2024-08-12T12:16:55.351Z",
           "id": "8",
+          "imageUrl": "",
+          "likes": 302,
           "name": "Новый айфон",
           "price": 100000,
-          "createdAt": "2024-08-12T12:16:55.351Z",
-          "views": 200000,
-          "likes": 302,
-          "imageUrl": "",
-          "count": 3
+          "views": 200000
         },
         {
-          "id": "6",
-          "name": "Картонная коробка",
-          "description": "Почная.",
-          "price": 7000,
+          "count": 2,
           "createdAt": "2024-04-12T20:16:55.351Z",
-          "views": 1,
-          "likes": 0,
+          "description": "Почная.",
+          "id": "6",
           "imageUrl": "",
-          "count": 2
+          "likes": 0,
+          "name": "Картонная коробка",
+          "price": 7000,
+          "views": 1
         }
       ]
     }

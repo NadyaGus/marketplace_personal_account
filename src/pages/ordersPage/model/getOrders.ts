@@ -1,11 +1,10 @@
-import type { Order } from '@/types';
-
 import { APP_ROUTES } from '@/app/routers';
 import { API_URL } from '@/shared/variables';
 
 import type { OrdersPageResponse } from '../types';
 
 import { sortOrderValues } from '../types';
+import { parseOrdersData } from './parseOrdersData';
 
 export const getOrders = async ({
   page = 1,
@@ -29,7 +28,8 @@ export const getOrders = async ({
       },
     );
 
-    const data = (await response.json()) as Order[];
+    const responseData = (await response.json()) as unknown;
+    const data = parseOrdersData(responseData);
     const total = Number(response.headers.get('X-Total-Count')) ?? 0;
 
     return { data, total };
@@ -46,7 +46,8 @@ export const getOrders = async ({
       },
     );
 
-    const data = (await response.json()) as Order[];
+    const responseData = (await response.json()) as unknown;
+    const data = parseOrdersData(responseData);
     const total = Number(response.headers.get('X-Total-Count')) ?? 0;
 
     return { data, total };
@@ -59,7 +60,8 @@ export const getOrders = async ({
     method: 'GET',
   });
 
-  const data = (await response.json()) as Order[];
+  const responseData = (await response.json()) as unknown;
+  const data = parseOrdersData(responseData);
   const total = Number(response.headers.get('X-Total-Count')) ?? 0;
 
   return { data, total };

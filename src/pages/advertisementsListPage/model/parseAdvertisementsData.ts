@@ -19,7 +19,6 @@ export const parseAdvertisementsData = (data: unknown): Advertisment[] => {
   const result = schema.safeParse(data);
 
   if (result.error) {
-    console.log(result.error);
     throw new Error('Failed to parse data');
   } else {
     return result.data;
