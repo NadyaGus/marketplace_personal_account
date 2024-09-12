@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100lvh - 4rem);
+  /* 5rem - header height, 4rem - footer height */
+  text-align: center;
+}

@@ -11,7 +11,18 @@ import logo from './assets/Avito_logo.svg';
 
 import classes from './header.module.css';
 
-export const Header = ({ links }: { links: HeaderLink[] }): ReactNode => {
+const links: HeaderLink[] = [
+  {
+    label: 'Объявления',
+    link: '/',
+  },
+  {
+    label: 'Заказы',
+    link: '/orders',
+  },
+];
+
+export const Header = (): ReactNode => {
   const path = new URL(window.location.href).pathname;
   const [active, setActive] = useState(path === '/orders' ? links[1].link : links[0].link);
   const [opened, { toggle }] = useDisclosure(false);
@@ -19,7 +30,7 @@ export const Header = ({ links }: { links: HeaderLink[] }): ReactNode => {
 
   useEffect(() => {
     setActive(path === '/orders' ? links[1].link : links[0].link);
-  }, [path, links]);
+  }, [path]);
 
   const items = links.map((link) => (
     <Link

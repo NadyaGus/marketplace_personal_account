@@ -2,3 +2,8 @@ body {
   min-width: 320px;
   margin: 0;
 }
+
+button {
+  cursor: pointer;
+  transition: 0.3s;
+}
