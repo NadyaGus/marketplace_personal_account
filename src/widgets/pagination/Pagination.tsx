@@ -21,8 +21,7 @@ export const PaginationWidget = (props: PaginationProps): ReactNode => {
     <Pagination
       mt="sm"
       onChange={handlePaginationChange}
-      px={'lg'}
-      py={'lg'}
+      pt={'lg'}
       total={props.pages}
       value={searchParams.get('page') ? Number(searchParams.get('page')) : 1}
     />

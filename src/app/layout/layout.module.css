@@ -2,7 +2,7 @@
   max-width: 1280px;
   margin: 0 auto;
   margin-top: 3rem;
-  min-height: calc(100lvh - 5rem - 4rem);
-  /* 5rem - header height, 4rem - footer height */
+  min-height: calc(100lvh - 5rem - 4rem + 2rem);
+  /* 5rem - header height, 4rem - footer height, 2rem padding */
   padding-bottom: 2rem;
 }

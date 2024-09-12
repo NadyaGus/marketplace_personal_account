@@ -1,5 +1,8 @@
 import type { Order } from '@/types';
 
+import { APP_ROUTES } from '@/app/routers';
+import { API_URL } from '@/shared/variables';
+
 import type { OrdersPageResponse } from '../types';
 
 import { sortOrderValues } from '../types';
@@ -17,7 +20,7 @@ export const getOrders = async ({
 
   if (sort === sortOrderValues.asc) {
     const response = await fetch(
-      `http://localhost:3000/orders?_page=${page}&_limit=12&_sort=total&_order=asc&${statusString}`,
+      `${API_URL}${APP_ROUTES.orders.link}?_page=${page}&_limit=12&_sort=total&_order=asc&${statusString}`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -34,7 +37,7 @@ export const getOrders = async ({
 
   if (sort === sortOrderValues.desc) {
     const response = await fetch(
-      `http://localhost:3000/orders?_page=${page}&_limit=12&_sort=total&_order=desc&${statusString}`,
+      `${API_URL}${APP_ROUTES.orders.link}?_page=${page}&_limit=12&_sort=total&_order=desc&${statusString}`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -49,7 +52,7 @@ export const getOrders = async ({
     return { data, total };
   }
 
-  const response = await fetch(`http://localhost:3000/orders?_page=${page}&_limit=12&${statusString}`, {
+  const response = await fetch(`${API_URL}${APP_ROUTES.orders.link}?_page=${page}&_limit=12&${statusString}`, {
     headers: {
       'Content-Type': 'application/json',
     },

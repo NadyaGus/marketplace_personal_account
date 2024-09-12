@@ -1,7 +1,9 @@
+import { APP_ROUTES } from '@/app/routers';
+import { API_URL } from '@/shared/variables';
 import { type Order, OrderStatus } from '@/types';
 
 export const completeOrder = async (order: Order): Promise<Response | void> => {
-  return await fetch(`http://localhost:3000/orders/${order.id}`, {
+  return await fetch(`${API_URL}${APP_ROUTES.orders.link}/${order.id}`, {
     body: JSON.stringify({
       createdAt: order.createdAt,
       deliveryWay: order.deliveryWay,

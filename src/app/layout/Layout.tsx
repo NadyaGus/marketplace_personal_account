@@ -15,7 +15,7 @@ export const Layout = (): ReactNode => {
 
   return (
     <>
-      <Header links={[APP_ROUTES.allAdvertisements, APP_ROUTES.orders]} />
+      <Header links={[APP_ROUTES.advertisements, APP_ROUTES.orders]} />
       <main className={classes.main}>
         <Outlet />
       </main>

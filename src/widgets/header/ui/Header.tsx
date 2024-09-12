@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Burger, Container, Drawer, Flex, Group, Image, Paper } from '@mantine/core';
@@ -16,6 +16,10 @@ export const Header = ({ links }: { links: HeaderLink[] }): ReactNode => {
   const [active, setActive] = useState(path === '/orders' ? links[1].link : links[0].link);
   const [opened, { toggle }] = useDisclosure(false);
   const [drawerOpened, { close: closeDrawer, toggle: toggleDrawer }] = useDisclosure(false);
+
+  useEffect(() => {
+    setActive(path === '/orders' ? links[1].link : links[0].link);
+  }, [path, links]);
 
   const items = links.map((link) => (
     <Link

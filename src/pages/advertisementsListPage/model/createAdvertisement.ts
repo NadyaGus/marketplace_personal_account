@@ -1,7 +1,10 @@
 import type { Advertisment } from '@/types';
 
+import { APP_ROUTES } from '@/app/routers';
+import { API_URL } from '@/shared/variables';
+
 export const createAdvertisement = async (data: Partial<Advertisment>): Promise<Response | void> => {
-  const response = await fetch('http://localhost:3000/advertisements', {
+  const response = await fetch(`${API_URL}${APP_ROUTES.advertisements.link}`, {
     body: JSON.stringify({
       createdAt: data.createdAt,
       imageUrl: data.imageUrl,

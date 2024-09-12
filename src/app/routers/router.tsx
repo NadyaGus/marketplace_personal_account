@@ -12,7 +12,7 @@ import { Layout } from '../layout';
 
 export const APP_ROUTES = {
   advertisement: { label: 'Страница объявления', link: '/advertisements/:id' },
-  allAdvertisements: { label: 'Объявления', link: '/advertisements' },
+  advertisements: { label: 'Объявления', link: '/advertisements' },
   orders: { label: 'Заказы', link: '/orders' },
   root: { label: 'Главная', link: '/' },
 };
@@ -24,7 +24,7 @@ export const routes = [
       {
         element: <AdvertisementsListPage />,
         loader: loaderAdvertisementsList,
-        path: APP_ROUTES.allAdvertisements.link,
+        path: APP_ROUTES.advertisements.link,
       },
       { element: <AdvertisementPage />, loader: loaderAdvertisementPage, path: APP_ROUTES.advertisement.link },
       { element: <OrdersListPage />, loader: loaderOrdersList, path: APP_ROUTES.orders.link },

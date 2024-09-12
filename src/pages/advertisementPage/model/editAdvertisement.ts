@@ -1,5 +1,8 @@
 import type { Advertisment } from '@/types';
 
+import { APP_ROUTES } from '@/app/routers';
+import { API_URL } from '@/shared/variables';
+
 export const editAdvertisement = async ({
   advertisement,
   id,
@@ -7,7 +10,7 @@ export const editAdvertisement = async ({
   advertisement: Partial<Advertisment>;
   id: string;
 }): Promise<Response | void> => {
-  return await fetch(`http://localhost:3000/advertisements/${id}`, {
+  return await fetch(`${API_URL}${APP_ROUTES.advertisements.link}/${id}`, {
     body: JSON.stringify({
       description: advertisement.description,
       id,

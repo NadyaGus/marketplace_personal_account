@@ -71,11 +71,12 @@
     {
       "id": "8",
       "name": "Новый айфон",
-      "price": 100000,
+      "price": "1000001",
       "createdAt": "2024-08-12T12:16:55.351Z",
       "views": 200000,
       "likes": 302,
-      "imageUrl": ""
+      "imageUrl": "",
+      "description": "Очень крутой"
     },
     {
       "id": "7fbd",
@@ -440,7 +441,7 @@
     },
     {
       "id": "6",
-      "status": 4,
+      "status": 5,
       "createdAt": "2024-08-12T20:20:55.351Z",
       "finishedAt": "",
       "total": 311000,
