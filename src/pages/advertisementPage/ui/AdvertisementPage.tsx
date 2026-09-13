@@ -60,12 +60,13 @@ export const AdvertisementPage = (): ReactNode => {
           >
             {
               <Image
-                alt={isAdvertisement.name}
-                h={{ base: 400, md: 600 }}
-                radius={'0.5rem'}
-                src={isAdvertisement.imageUrl ? isAdvertisement.imageUrl : placeholderImage}
-                w={'100%'}
-              />
+                  alt={isAdvertisement.name}
+                  fallbackSrc={placeholderImage}
+                  h={{ base: 400, md: 600 }}
+                  radius={'0.5rem'}
+                  src={isAdvertisement.imageUrl || placeholderImage}
+                  w={'100%'}
+                />
             }
           </Skeleton>
 

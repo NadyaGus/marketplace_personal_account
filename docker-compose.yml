@@ -1,0 +1,24 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://backend:3000
+    container_name: marketplace-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  backend:
+    image: node:20-alpine
+    container_name: marketplace-backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./db.json:/app/db.json:ro
+    working_dir: /app
+    command: npx json-server --host 0.0.0.0 --watch /app/db.json --port 3000
+    restart: unless-stopped

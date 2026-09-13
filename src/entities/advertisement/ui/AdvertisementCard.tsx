@@ -23,9 +23,10 @@ export const AdvertisementCard = ({ item }: { item: Advertisment }): ReactNode =
               {
                 <Image
                   alt={item.name}
+                  fallbackSrc={placeholderImage}
                   h={200}
                   radius={'0.5rem'}
-                  src={item.imageUrl ? item.imageUrl : placeholderImage}
+                  src={item.imageUrl || placeholderImage}
                   w={'100%'}
                 />
               }
